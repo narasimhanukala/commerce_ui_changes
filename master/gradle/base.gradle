@@ -1,0 +1,140 @@
+apply plugin: 'build-dashboard'
+apply from: 'gradle/workspace.gradle'
+
+// Note if you want to download newer depedencies from Ivy within a 24 hour
+// period, use the "--refresh-dependencies" option in gradle
+allprojects {
+	// pull from maven central and from the Commerce maven repo
+	repositories {
+		maven {
+			url 'https://na.artifactory.swg-devops.com/artifactory/wce-wte-snapshot-maven-local'
+			credentials {
+			    username 'nraonuka@in.ibm.com'
+			    password 'MicrosRetailj@2'
+		    }
+		}
+		mavenCentral()
+	}
+
+	group = rootProject.group
+	version = rootProject.version
+
+	/////////////////////////////////////////////
+	// All projects should have an eclipse nature
+	/////////////////////////////////////////////
+	apply plugin: 'eclipse'
+
+	// Download Javadocs and add to the classpath
+	eclipse.classpath.downloadJavadoc = true
+	eclipse.classpath.downloadSources = false
+	cleanEclipse.finalizedBy('eclipse')
+}
+
+subprojects {
+	// all subprojects should be able to compile java code
+	// and build JAR files
+	apply plugin: 'java'
+	apply plugin: 'eclipse-wtp'
+
+	sourceCompatibility = rootProject.javaVersion
+	targetCompatibility = rootProject.javaVersion
+
+	jar.doFirst {
+		// when creating a JAR file, ensure that the MANIFEST contains the
+		// required runtime classpath
+		ext.manifestClasspath = sourceSets.main.runtimeClasspath.files.findAll({ !it.isDirectory() && it.exists() }).collect({it.name})
+		manifest {
+			attributes("Implementation-Version": !version ? "1.0" : version )
+			attributes("Class-Path": manifestClasspath.join(' '))
+		}
+	}
+
+	// Add a provided dependency type that does not get included in deployments
+	configurations {
+		provided
+	}
+
+	sourceSets {
+		main.compileClasspath += configurations.provided
+		test.compileClasspath += configurations.provided
+		test.runtimeClasspath += configurations.provided
+	}
+
+	eclipse {
+		classpath.plusConfigurations += [configurations.provided]
+	}
+
+	configurations {
+		all {
+			resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+		}
+	}
+
+	///////////////////
+	// UT configuration
+	///////////////////
+	// After tests are run, copy the results to the root project
+	task copyTestResults(type: Copy) {
+		from testResultsDir
+		into "${rootProject.buildDir}/test-results"
+		include '*.xml'
+	}
+	test {
+		testLogging {
+			events "failed", "passed", "skipped", "started"
+			exceptionFormat "full"
+			showStackTraces true
+
+			// when running Gradle with a '--info', display the stanard streams
+			info.showStandardStreams = true
+		}
+
+		finalizedBy 'copyTestResults'
+	}
+	dependencies {
+		// everyone should have a dependency on JUnit
+		testCompile 'junit:junit:4.12'
+		testCompile 'org.hamcrest:hamcrest-library:1.3'
+	}
+
+	///////////////////
+	// Publishing logic
+	///////////////////
+	apply from: "${rootDir}/gradle/publishing.gradle"
+
+	publishing {
+		publications {
+			mavenJava(MavenPublication) {
+				from components.java
+			}
+		}
+	}
+
+	//////////////////////
+	// Code coverage logic
+	//////////////////////
+	apply plugin: 'jacoco'
+
+	jacoco {
+		toolVersion = "0.7.5.201505241946"
+	}
+
+	// when running the build, also produce a code coverage report
+	build.dependsOn(jacocoTestReport)
+}
+
+task clean(type: Delete) {
+	delete buildDir
+}
+
+task build(dependsOn: buildDashboard)
+
+allprojects {
+	afterEvaluate {
+		// ensure that the root build task depends on sub project's build tasks
+		def task = it.tasks.findByPath("build")
+		if (task != null && task != rootProject.tasks.build) {
+			rootProject.tasks.build.dependsOn(task)
+		}
+	}
+}

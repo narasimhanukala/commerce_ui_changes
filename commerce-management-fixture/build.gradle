@@ -1,0 +1,6 @@
+dependencies {
+	compile group: 'com.ibm.commerce.qa.test-frameworks-utils', name: 'fvt-utils', version: '1.0+'
+	compile group: 'com.ibm.commerce.qa.test-frameworks-wte', name: 'WCWebTestEngine', version: '1.0+'
+	compile group: 'com.ibm.commerce.qa.test-frameworks-wte', name: 'Wte', version: '1.0+'
+	compile group: 'org.jsoup', name: 'jsoup', version: '1.8.+'
+}
