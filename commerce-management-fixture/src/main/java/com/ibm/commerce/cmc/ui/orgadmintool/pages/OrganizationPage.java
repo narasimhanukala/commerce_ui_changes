@@ -16,21 +16,20 @@ package com.ibm.commerce.cmc.ui.orgadmintool.pages;
  *-----------------------------------------------------------------
  */
 
-import com.ibm.commerce.cmc.ui.orgadmintool.pages.*;
 import com.ibm.commerce.qa.wte.framework.page.PageObject;
 import com.ibm.commerce.qa.wte.framework.page.PageObject.PageType;
 
-@PageObject(type=PageType.SECTION)
+@PageObject(type = PageType.SECTION)
 public interface OrganizationPage {
-	
+
 	public CreateOrganizationsPage newOrg();
-	
+
 	public FindOrganizationsPage findOrg();
-	
+
 	public ApprovalsPage approvals();
-	
+
 	public void goToNextPage();
-	
+
 	public void goToPage(String pageNumber);
 
 	public void goToPreviousPage();
@@ -39,6 +38,6 @@ public interface OrganizationPage {
 
 	public void getMainFrame();
 
-	public void goToOrgDetail(String name);
-			
+	public CreateOrganizationsPage goToOrgDetail(String name);	
+	public void validateOrganizationExist(String name, String parentOrg, String orgType);	
 }

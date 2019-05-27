@@ -78,7 +78,7 @@ public class LoginFlow extends AbstractSingleSessionTest{
 	 * @throws Exception
 	 */
 	public void login(String user) throws Exception{
-		ibmIdSignInPage = getSession().continueToPage("https://idaas.iam.ibm.com", IbmIdSignInPage.class);
+		//ibmIdSignInPage = getSession().continueToPage("https://idaas.iam.ibm.com", IbmIdSignInPage.class);
 		initLoginData(user);
 		loginThroughUI();
 		//give enough time for log in to take effect

@@ -67,7 +67,7 @@ public class CreateUserFlow extends AbstractSingleSessionTest{
 		return logonId;
 	}
 	
-	public String geTtitle() {
+	public String getTitle() {
 		return title;
 	}
 	
@@ -415,7 +415,7 @@ public class CreateUserFlow extends AbstractSingleSessionTest{
 		createUser.typePasswordConfirmation(passwordConfirm);
 		createUser.selectParentOrganization(parentOrg);
 		createUser.selectAccountPolicy(accountPolicy);
-		createUser.clickNext();
+		createUser.next();
 		
 		
 		createUser.selectTitle(title);
@@ -429,7 +429,7 @@ public class CreateUserFlow extends AbstractSingleSessionTest{
 		createUser.typeStreetAddress(streetAddress);
 		createUser.typeStreetAddress2(streetAddress2);
 		createUser.typeCity(city).typeState(state).typePostalCode(zip);
-		createUser.clickNext();
+		createUser.next();
 		
 		//Roles code to be added here
 		
@@ -437,7 +437,7 @@ public class CreateUserFlow extends AbstractSingleSessionTest{
 		
 		createUser.selectFromAvailableRoles(role);
 		
-		createUser.clickNext();
+		createUser.next();
 		
 		//Groups Code to be added here
 		createUser.findAGroupToInclude(includeGroup);

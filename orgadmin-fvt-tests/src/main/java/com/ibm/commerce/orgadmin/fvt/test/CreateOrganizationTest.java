@@ -63,7 +63,7 @@ public class CreateOrganizationTest extends AbstractSingleSessionTest{
 		
 		this.enableFeature(FeatureName);
 		
-		loginFlow.login("baseOrgAdmin");
+		//loginFlow.login("baseOrgAdmin");
 		
 		//perform log on action
 		LogonCMC logonCMC = getSession().continueToPage(getConfig().getCMCUrl(), LogonCMC.class);

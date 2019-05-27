@@ -344,10 +344,10 @@ public class UserManagementFlow extends AbstractSingleSessionTest{
 			createUser.typeEmail1(email1);
 		}
 		createUser.typePassward(password);
-		createUser.typePasswordConfirmation(passwordConfirm);
+		//createUser.typePasswordConfirmation(passwordConfirm);
 		createUser.selectParentOrganization(parentOrg);
 		createUser.selectAccountPolicy(accountPolicy);
-		createUser.clickNext();
+		createUser.save();
 		
 		
 		createUser.selectTitle(title);
@@ -361,7 +361,7 @@ public class UserManagementFlow extends AbstractSingleSessionTest{
 		createUser.typeStreetAddress(streetAddress);
 		createUser.typeStreetAddress2(streetAddress2);
 		createUser.typeCity(city).typeState(state).typePostalCode(zip);
-		createUser.clickNext();
+		createUser.save();
 		
 		//Roles code to be added here
 		
@@ -369,7 +369,7 @@ public class UserManagementFlow extends AbstractSingleSessionTest{
 		
 		createUser.selectFromAvailableRoles(role);
 		
-		createUser.clickNext();
+		createUser.save();
 		
 		//Groups Code to be added here
 		createUser.findAGroupToInclude(includeGroup);

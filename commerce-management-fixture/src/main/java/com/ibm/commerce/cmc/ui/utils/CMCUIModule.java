@@ -50,6 +50,8 @@ public class CMCUIModule extends AbstractModule {
 		bind(CreateOrganizationsPage.class).to(CreateOrganizationsPageImpl.class);
 		bind(UserManagementPage.class).to(UserManagementPageImpl.class);
 		bind(CreateUserPage.class).to(CreateUserPageImpl.class);
+		bind(GroupsListPage.class).to(GroupsListPageImpl.class);
+		bind(CreateGroupsPage.class).to(CreateGroupsPageImpl.class);
 		bind(CatalogsHomePage.class).to(CatalogsHomePageImpl.class);
 		
 		// components binding

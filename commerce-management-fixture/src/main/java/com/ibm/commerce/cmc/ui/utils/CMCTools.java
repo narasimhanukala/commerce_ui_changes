@@ -24,7 +24,9 @@ import com.ibm.commerce.cmc.ui.orgadmintool.pages.*;
 public enum CMCTools {
 
 	ORGANIZATION("Organization Management", OrganizationPage.class),
-	USER("User Management", UserManagementPage.class);
+	USER("User Management", UserManagementPage.class),
+	//added Group newly by NN on 13/05/2019
+	GROUP("Member Group Management", GroupsListPage.class);
 	
 	private final String displayName;
 	private final Class<?> pageObjectClass;

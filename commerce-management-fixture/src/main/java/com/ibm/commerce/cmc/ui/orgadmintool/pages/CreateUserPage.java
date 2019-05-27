@@ -83,7 +83,10 @@ public interface CreateUserPage {
 	public CreateUserPage submit();
 	
 	public CreateUserPage cancel();
-	public CreateUserPage clickNext();
+	
+	public CreateUserPage next();
+	
+	public CreateUserPage save();
 	
 	public CreateUserPage selectOrganizationForRoles(String organization);
 	

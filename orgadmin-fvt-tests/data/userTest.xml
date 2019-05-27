@@ -29,8 +29,8 @@
 				<Parameter name="lastName" value="BLR Last"/>
 				<Parameter name="password" value="Diet4coke@"/>
 				<Parameter name="passwordConfirm" value="Diet4coke@"/>
-				<!--  <Parameter name="accountPolicy" value="Shoppers"/>-->
-				<Parameter name="accountPolicy" value="User"/>
+				<Parameter name="accountPolicy" value="Shoppers"/>
+				<!--  <Parameter name="accountPolicy" value="User"/>-->
 				<Parameter name="accountStatus" value="Disabled"/>
 				<Parameter name="employeeId" value="007IBM"/>
 				<Parameter name="employeeType" value="regular"/>
@@ -75,8 +75,8 @@
 				<Parameter name="lastName" value="BLR Last"/>
 				<Parameter name="password" value="Diet4coke@"/>
 				<Parameter name="passwordConfirm" value="Diet4coke@"/>
-				<!--  <Parameter name="accountPolicy" value="Shoppers"/>-->
-				<Parameter name="accountPolicy" value="User"/>
+				<Parameter name="accountPolicy" value="Shoppers"/>
+				<!--<Parameter name="accountPolicy" value="User"/>-->
 				<Parameter name="accountStatus" value="Disabled"/>
 				<Parameter name="employeeId" value="007IBM"/>
 				<Parameter name="employeeType" value="regular"/>

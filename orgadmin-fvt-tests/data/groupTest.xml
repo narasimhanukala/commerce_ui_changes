@@ -1,0 +1,69 @@
+<!--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2019 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+-->
+
+<Scenario name="GROUP">
+
+	<Test name="ADDGROUP">
+		
+		<Datablock name="groupInfo">
+			<Input>
+				<Parameter name="groupType" value="Organization"/>
+				
+				<Parameter name="groupName" value="TestGroup Name"/>
+				
+				<Parameter name="groupDescription" value="Test Group Description"/>
+				<Parameter name="parentOrganization" value="Test Parent Organization"/>
+				
+				<Parameter name="account" value="Organization"/>
+				<Parameter name="accountSize" value="Organization"/>
+				<Parameter name="accountGeoLocation" value="Organization"/>
+				<Parameter name="accountOperationLocation" value="Organization"/>
+				
+				<Parameter name="accountIndustry" value="Organization"/>
+				<Parameter name="accountBusiness" value="Organization"/>
+				<Parameter name="accountSales" value="Organization"/>
+				<Parameter name="accountSalesAmount" value="25000"/>
+				
+				
+			</Input>
+		</Datablock>
+		
+	</Test>
+	<Test name="MANAGEGROUP">
+		
+		<Datablock name="groupInfo">
+			<Input>
+				<Parameter name="groupType" value="Organization"/>
+				
+				<Parameter name="groupName" value="TestGroup Name"/>
+				
+				<Parameter name="groupDescription" value="Test Group Description"/>
+				<Parameter name="parentOrganization" value="Test Parent Organization"/>
+				
+				<Parameter name="account" value="Organization"/>
+				<Parameter name="accountSize" value="Organization"/>
+				<Parameter name="accountGeoLocation" value="Organization"/>
+				<Parameter name="accountOperationLocation" value="Organization"/>
+				
+				<Parameter name="accountIndustry" value="Organization"/>
+				<Parameter name="accountBusiness" value="Organization"/>
+				<Parameter name="accountSales" value="Organization"/>
+				<Parameter name="accountSalesAmount" value="25000"/>
+				
+			</Input>
+		</Datablock>
+		
+	</Test>
+
+</Scenario>
